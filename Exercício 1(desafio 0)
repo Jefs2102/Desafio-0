@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void generateAndPrintAsteriskList(int n) {
+    int i;
+    char **list = (char **)malloc(n * sizeof(char *));
+    if (list == NULL) {
+        printf("Erro ao alocar memória.\n");
+        exit(1);
+    }
+    
+    
+    for (i = 0; i < n; i++) {
+        
+        list[i] = (char *)malloc((i + 2) * sizeof(char)); 
+        if (list[i] == NULL) {
+            printf("Erro ao alocar memória.\n");
+            exit(1);
+        }
+        
+        
+        memset(list[i], '*', i + 1);
+        list[i][i + 1] = '\0'; 
+        
+        
+        printf("%s\n", list[i]);
+    }
+
+    
+    for (i = 0; i < n; i++) {
+        free(list[i]);
+    }
+    
+    
+    free(list);
+}
+
+int main() {
+    int n = 5;
+    
+   
+    generateAndPrintAsteriskList(n);
+    
+    return 0;
+}
