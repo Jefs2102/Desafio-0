@@ -1,0 +1,10 @@
+def generate_subsets(arr):
+    num_subsets = 1 << len(arr)
+
+    for subset_mask in range(num_subsets):
+        subset = [arr[i] for i in range(len(arr)) if subset_mask & (1 << i)]
+        print(subset)
+
+if __name__ == "__main__":
+    arr = [1, 2]
+    generate_subsets(arr)
