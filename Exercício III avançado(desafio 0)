@@ -1,0 +1,24 @@
+from itertools import combinations
+
+def find_subsets(arr, min_size, max_size, distinct_only, sort_subsets):
+    def print_subset(subset):
+        if sort_subsets:
+            subset = sorted(subset)
+        print(f"{{ {' '.join(map(str, subset))} }}")
+
+    if distinct_only:
+        arr = list(set(arr))
+    
+    for size in range(min_size, max_size + 1):
+        for subset in combinations(arr, size):
+            print_subset(subset)
+
+if __name__ == "__main__":
+    arr = [1, 2, 3, 4]
+    min_size = 1
+    max_size = 3
+    distinct_only = True
+    sort_subsets = True
+
+    print("Subconjuntos:")
+    find_subsets(arr, min_size, max_size, distinct_only, sort_subsets)
